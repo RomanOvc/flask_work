@@ -1,0 +1,115 @@
+<html>
+<head>
+    <title>Flask Shop</title>
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/node_modules/wowjs/css/libs/animate.css">
+    <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/static/node_modules/wowjs/dist/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg  bg-dark fixed-top">
+    <a class="navbar-brand" href="#" data-value="hed">Проекты</a>
+
+    <button class="navbar-toggler custom-toggler " type="button" data-toggle="collapse"
+            data-target="#navbarTogglerIndexPage" aria-controls="navbarTogglerIndexPage" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerIndexPage">
+        <ul class="navbar-nav mr-4">
+            <li class="nav-item">
+                <a class="nav-link nav-color-hover" data-value="numbers_block" href="#">Числа</a></li>
+            <li class="nav-item">
+                <a class="nav-link nav-color-hover" data-value="classic_algoritm_block" href="#">Класические
+                    алгоритмы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-color-hover" data-value="graf" href="#">Графы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-color-hover" data-value="structure_data_block" href="#">Структуры данных</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-color-hover " data-value="network_block" href="#">Сети</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="numbers_block " id="numbers_block">
+    <div class="block_number ">
+        <h1>Числа</h1>
+        <ul>
+            <div class="wow bounceInLeft lol">
+                <li><a class="btn btn-outline-primary btn-sm btn-block " href="{{ url_for('first') }}">Разложение
+                    числа на
+                    простые множители</a></li>
+            </div>
+            <div class="wow bounceInRight">
+                <li><a class="btn btn-outline-primary btn-sm btn-block" href="{{ url_for('fibonac') }}">Числа
+                    Фибонначи</a>
+                </li>
+            </div>
+            <div class="wow bounceInLeft">
+                <li><a class="btn btn-outline-primary btn-sm btn-block"
+                       href="{{ url_for('obm_voz') }}">Обмен-Возврат</a>
+                </li>
+            </div>
+            <div class="wow bounceInRight">
+                <li><a class="btn btn-outline-primary btn-sm btn-block"
+                       href="{{ url_for('mortgage') }}">Калькулятор Ипотеки</a>
+                </li>
+            </div>
+            <div class="wow bounceInLeft">
+                <li><a class="btn btn-outline-primary btn-sm btn-block"
+                       href="{{ url_for('ajax_test_calc') }}">Аякс тест</a>
+                </li>
+            </div>
+            <div class="wow bounceInRight">
+                <li><a class="btn btn-outline-primary btn-sm btn-block"
+                       href="{{ url_for('test_request') }}">Test_request</a>
+                </li>
+            </div>
+            <div class="wow bounceInLeft">
+                <li><a class="btn btn-outline-primary btn-sm btn-block"
+                       href="{{ url_for('new_page') }}">dec -> <- two</a>
+                </li>
+            </div>
+            <div class="wow bounceInRight">
+                <li><a class="btn btn-outline-primary btn-sm btn-block"
+                       href="{{ url_for('calculator') }}">calculator</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
+<div class="classic_algoritm_block  " id="classic_algoritm_block">
+    <div class="block_number">
+        <h1>Класические алгоритмы</h1>
+        <ul>
+            <li><a class="4" href="{{ url_for('first') }}">Разложение числа на простые множители</a></li>
+            <li><a class="4" href="{{ url_for('fibonac') }}">Числа Фибонначи</a></li>
+            <li><a class="4" href="{{ url_for('obm_voz') }}">Обмен-Возврат</a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="graf" id="graf">
+    <div class="block_number">
+        <h1>ЯЯ</h1>
+        <ul>
+            <li><a class="4" href="{{ url_for('first') }}">Разложение числа на простые множители</a></li>
+            <li><a class="4" href="{{ url_for('fibonac') }}">Числа Фибонначи</a></li>
+            <li><a class="4" href="{{ url_for('obm_voz') }}">Обмен-Возврат</a></li>
+
+        </ul>
+    </div>
+</div>
+<script src="/static/js/main.js"></script>
+<script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

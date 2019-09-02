@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Shop</title>
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/node_modules/wowjs/css/libs/animate.css">
+    <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/static/node_modules/wowjs/dist/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <style>
+        .btn {
+            width: 40px;
+            margin: 5px;
+        }
+
+        .form-control {
+            width: 310px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+{% endblock %}
+
+<script src="/static/js/main.js"></script>
+<script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

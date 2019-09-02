@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/node_modules/wowjs/css/libs/animate.css">
+    <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+
+</head>
+<body>
+
+
+<script>
+    function button_type_code_answer() {
+        var number = document.getElementById('number');
+        var selected_option;
+        if (document.getElementById('select_type_code').value === "0") {
+            selected_option = 0;
+        } else {
+            selected_option = 1;
+        }
+        var entry = {
+            number: number.value,
+            selected_option: selected_option
+        };
+        fetch('/new_page/create-entry', {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+            .then(function (response) {
+                if (response.status !== 200) {
+                    console.log(`Looks like there was a problem. Status code: ${response.status}`)
+                }
+                response.json().then(function (data) {
+                    document.getElementById('answer').innerHTML = data.answer;
+                })
+            })
+    }
+
+    // function submit_message() {
+    //     var fname = document.getElementById("fname");
+    //     var lname = document.getElementById("lname");
+    //     var entry = {
+    //         fname: fname.value,
+    //         lname: lname.value,
+    //     };
+    //     fetch('/new_page/create-entry', {
+    //         method: "POST",
+    //         credentials: "include",
+    //         body: JSON.stringify(entry),
+    //         cache: "no-cache",
+    //         headers: new Headers({
+    //             "content-type": "application/json"
+    //         })
+    //     })
+    //         .then(function (response) {
+    //             if (response.status !== 200) {
+    //                 console.log(`Looks like there was a problem. Status code: ${response.status}`);
+    //                 return;
+    //             }
+    //             response.json().then(function (data) {
+    //                 document.getElementById('xui').innerHTML = data.fname;
+    //             });
+    //         })
+    // }
+
+
+</script>
+<p id="xui"></p>
+<form id="form_select_type_code" method="post">
+    <table>
+        <tr>
+            <td>
+                <p>
+                    <input type="text" id="number">
+                </p>
+            </td>
+            <td>
+                <p>
+                    <select id="select_type_code">
+                        <option value="0" selected>в десятичную</option>
+                        <option value="1">в двоичную</option>
+                    </select>
+                </p>
+            </td>
+            <td>
+                <p>
+                    <input type="button" value="расчитать" onclick="button_type_code_answer()">
+                </p>
+            </td>
+        </tr>
+    </table>
+</form>
+<p id="answer"></p>
+<script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<script>
+
+    var kek = '';
+    var num = '';
+
+    function facke_func(event) {
+        while (true) {
+            if (event.target.dataset.but === undefined) {
+                num += '';
+                document.getElementById('expr').value = num;
+                break;
+            } else if (event.target.dataset.but === 'C') {
+                num = '';
+                document.getElementById('expr').value = 0;
+                break;
+            } else if (event.target.dataset.but === '+' || event.target.dataset.but === '-' || event.target.dataset.but === '*') {
+                num = event.target.dataset.but;
+                document.getElementById('expr').value = num;
+                num = '';
+                break;
+            } else {
+                num += event.target.dataset.but;
+                document.getElementById('expr').value = num;
+                // console.log(num);
+
+                break;
+            }
+
+        }
+
+    }
+
+
+    function show(event) {
+        while (true) {
+            if (event.target.dataset.but === 'C') {
+                kek = '';
+                break;
+            } else if (event.target.dataset.but === '=') {
+                kek += event.target.dataset.but;
+                // console.log(kek);
+                var entry = {
+                    "response": kek,
+                };
+                fetch('/calculator/calculator-entry', {
+                    method: "POST",
+                    credentials: "include",
+                    body: JSON.stringify(entry),
+                    cache: "no-cache",
+                    headers: new Headers({
+                        "content-type": "application/json"
+                    })
+                }).then(function (response) {
+                    if (response.status !== 200) {
+                        console.log(`Looks like there was a problem. Status code: ${response.status}`)
+                    }
+                    response.json().then(function (data) {
+                        document.getElementById('expr').value = data.answer;
+                    })
+                });
+                kek = '';
+                break;
+            } else if (event.target.dataset.but !== undefined) {
+                kek += event.target.dataset.but;
+                // document.getElementById('expr').value = kek;
+                // console.log(kek);
+                break;
+            } else {
+                kek += '';
+                break
+            }
+        }
+    }
+
+
+    document.addEventListener('click', show);
+    document.addEventListener('click', facke_func)
+</script>
+<p id="answer"></p>
+<div class="container">
+    <div class="row">
+        <div>
+            <input id='expr' class='form-control' value="0"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <input type="button" id='b1' class='btn btn-success btn-but' value="1" data-but="1">
+            <input type="button" id='b2' class='btn btn-success btn-but' value="2" data-but="2">
+            <input type="button" id='b3' class='btn btn-success btn-but' value="3" data-but="3">
+            <input type="button" id='bClear' class='btn btn-danger btn-but' value="C" data-but="C">
+
+            <!--            <button id='bX2' class='btn btn-danger'>X<sup>2</sup></button>-->
+        </div>
+        <div class="container">
+            <input type="button" id='b4' class='btn btn-success btn-but' value="4" data-but="4">
+            <input type="button" id='b5' class='btn btn-success btn-but' value="5" data-but="5">
+            <input type="button" id='b6' class='btn btn-success btn-but' value="6" data-but="6">
+            <input type="button" id='bMult' class='btn btn-danger btn-but' value="*" data-but="*">
+
+            <!--            <button id='bSqrt' class='btn btn-danger'>sqrt</button>-->
+        </div>
+        <div class="container">
+            <input type="button" id='b7' class='btn btn-success btn-but' value="7" data-but="7">
+            <input type="button" id='b8' class='btn btn-success btn-but' value="8" data-but="8">
+            <input type="button" id='b9' class='btn btn-success btn-but' value="9" data-but="9">
+            <input type="button" id='bPlus' class='btn btn-danger btn-but' value="+" data-but="+">
+            <!--            <button id='bSin' class='btn btn-danger'>sin</button>-->
+            <!--            <button id='bTg' class='btn btn-danger'>tg</button>-->
+        </div>
+        <div class="container">
+            <input type="button" id='b0' class='btn btn-success btn-but' value="0" data-but="0">
+            <input type="button" id='bDot' class='btn btn-warning btn-but' value="." data-but=".">
+            <input type="button" id='bCalc' class='btn btn-danger btn-but' value="=" data-but="=">
+            <input type="button" id='bDiv' class='btn btn-danger btn-but' value="/" data-but="/">
+            <!--            <button id='bCos' class='btn btn-danger'>cos</button>-->
+            <!--            <button id='bCtg' class='btn btn-danger'>ctg</button>-->
+        </div>
+    </div>
+</div>
+{% endblock %}

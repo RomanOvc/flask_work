@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obmen_vozvrat</title>
+</head>
+<body>
+<form method="POST">
+    <table>
+        <tr>
+            <td>Введите годовую процентную ставку:(%)</td>
+            <td>Введите общую сумму средств:($)</td>
+            <td>Введите срок займа в месяц:(количество месяцы)</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="annual_interest_rate"></td>
+            <td><input type="text" name="total_funds"></td>
+            <td><input type="text" name="loan_term_per_month"></td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
+<h1>Ежемесячная плата составляет: {{answer}}</h1>
+</body>
+</html>
